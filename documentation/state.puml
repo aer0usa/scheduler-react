@@ -1,0 +1,15 @@
+@startuml
+class State {
+    Array flights[]
+    Date currentDate
+}
+
+class flightProps {
+    Int id
+    Instructor instructor
+    Student student
+    Aircraft aircraft
+    Date start
+    Date end
+}
+@enduml

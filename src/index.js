@@ -1,12 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ========================================
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function Flight(props) {
+    return (
+        <div
+            onClick={props.onClick}
+        >
+        </div>
+    );
+}
+
+class DayGrid extends React.component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            flights: Array(9).fill(null),
+            date: Date.now()
+        };
+    }
+
+    handleClick(flight) {}
+
+    renderFlight(flight) {
+        return (
+            <Flight
+                flight = {flight}
+                onClick = {() => this.handleClick(flight)}
+            />
+        );
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.flights.map(flight => (this.renderFlight(flight)))}
+            </div>
+        );
+    }
+}
+
+class Scheduler extends React.component {
+    render() {
+        return (<DayGrid />);
+    }
+}
+
+// ========================================
+
+ReactDOM.render(
+  <Scheduler />,
+  document.getElementById('root')
+);

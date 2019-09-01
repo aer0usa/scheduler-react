@@ -1,3 +1,6 @@
+# React Scheduler
+A re-creation of my old Flight School Scheduler, implemented with React.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
