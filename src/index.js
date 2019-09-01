@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { defaultFlights } from './defaultFlights.js'
 
 // ========================================
 
@@ -9,26 +10,29 @@ function Flight(props) {
         <div
             onClick={props.onClick}
         >
+            {props.flight.aircraft}
         </div>
     );
 }
 
-class DayGrid extends React.component {
+class DayGrid extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            flights: Array(9).fill(null),
+            flights: defaultFlights.slice(),
             date: Date.now()
         };
     }
 
-    handleClick(flight) {}
+    handleClick(flightId) {
+        alert(`Clicked ${flightId}`);
+    }
 
     renderFlight(flight) {
         return (
             <Flight
                 flight = {flight}
-                onClick = {() => this.handleClick(flight)}
+                onClick = {() => this.handleClick(flight.id)}
             />
         );
     }
@@ -42,7 +46,7 @@ class DayGrid extends React.component {
     }
 }
 
-class Scheduler extends React.component {
+class Scheduler extends React.Component {
     render() {
         return (<DayGrid />);
     }
