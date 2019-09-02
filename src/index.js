@@ -7,7 +7,11 @@ import { DayGrid } from './dayGrid.js'
 
 class Scheduler extends React.Component {
     render() {
-        return (<DayGrid />);
+        return (
+            <div className='scheduler'>
+                <DayGrid />
+            </div>
+        );
     }
 }
 

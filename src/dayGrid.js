@@ -40,6 +40,7 @@ class DayGrid extends React.Component {
                 onClick = {() => this.handleClick(flight.id)}
                 left = {100 * this.state.aircraft.indexOf(flight.aircraft) / this.state.aircraft.length}
                 top = {(flight.start - this.state.date - this.dayStart) / this.verticalScale}
+                width = {90 / this.state.aircraft.length}
                 height = {(flight.end - flight.start) / this.verticalScale}
             />
         );
@@ -47,11 +48,11 @@ class DayGrid extends React.Component {
 
     render() {
         return (
-            <div
-                className='dayGrid'
-            >
+            <div className='dayGrid' >
                 <div className='dateDisplay'>{this.state.dateString}</div>
-                {this.state.flights.map(flight => (this.renderFlight(flight)))}
+                <div className='flightsContainer'>
+                    {this.state.flights.map(flight => (this.renderFlight(flight)))}
+                </div>
             </div>
         );
     }

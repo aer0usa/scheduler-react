@@ -4,6 +4,7 @@ function Flight(props) {
     const calculatedStyle = {
         left: props.left + '%',
         top: props.top + 'px',
+        width: props.width + '%',
         height: props.height + 'px'
     }
     return (
