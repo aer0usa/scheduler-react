@@ -2,9 +2,7 @@ import React from 'react';
 
 function Flight(props) {
     const calculatedStyle = {
-        left: props.left + '%',
         top: props.top + 'px',
-        width: props.width + '%',
         height: props.height + 'px'
     }
     return (
@@ -13,7 +11,9 @@ function Flight(props) {
             onClick={props.onClick}
             style={calculatedStyle}
         >
-            {props.flight.aircraft}
+            {new Date(props.flight.start).toLocaleTimeString('en-US', {"timeStyle":"short"})}<br />
+            {props.flight.instructor}<br />
+            {props.flight.student}
         </div>
     );
 }

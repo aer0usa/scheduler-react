@@ -4,16 +4,20 @@
 
 ## [TODO]
 ### Features
+* Data Models for Aircraft, Instructors, Students
 * Date Chooser
+* Live Data / Server
 * Make Flight Grid More Graphically Pleasing
     * Time Gridlines, Aircraft Headers, Flight Colors
-* Data Models for Aircraft, Instructors, Students
-* Trigger Flight Editor
+* Flight Click Triggers Flight Editor
 * Stretch Flight Lengths
 * Drag & Drop Flights
-* Live Data / Server
 
 ----------
+
+## [0.2.1]
+### Fixes
+* Refactor for Graphical Improvements: Columns and Time labels
 
 ## [0.2.0]
 ### Features
