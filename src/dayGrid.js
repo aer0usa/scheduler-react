@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
-import { defaultFlights } from './defaultFlights.js'
-import { dayBegin, firstDay, flightsForDay, aircraftForDay, flightsForAircraft } from './utils.js'
+import { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents } from './defaultFlights.js'
+import { dayBegin, firstDay, flightsForDay, aircraftForFlights, flightsForAircraft } from './utils.js'
 import { Flight } from './flight.js'
 
 class DayGrid extends React.Component {
@@ -12,13 +12,14 @@ class DayGrid extends React.Component {
         super(props);
         const today = dayBegin(firstDay(defaultFlights));
         const todaysFlights = flightsForDay(defaultFlights, today);
-        const todaysAircraft = aircraftForDay(todaysFlights);
+        const todaysAircraft = aircraftForFlights(todaysFlights, defaultAircraft);
         const todayString = new Date(today).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
-        console.log(`DayGrid has ${todaysAircraft.length} aircraft.`);
         this.columnCount = todaysAircraft.length;
         this.state = {
             flights: todaysFlights,
             aircraft: todaysAircraft,
+            instructors: defaultInstructors.slice(),
+            students: defaultStudents.slice(),
             date: today,
             dateString: todayString
         };
@@ -31,8 +32,14 @@ class DayGrid extends React.Component {
         alert(`Clicked ${thisFlight.aircraft}\n${flightStart}\nInstructor: ${thisFlight.instructor}\nStudent: ${thisFlight.student}`);
     }
 
+    getInstructorName = (instructorId) => this.state.instructors.filter((filterInstructor) => filterInstructor.id === instructorId)[0].name;
+
+    getStudentName = (studentId) => {
+        const aStud = this.state.students.filter((filterStudent) => filterStudent.id === studentId);
+        return aStud[0].firstName + ' ' + aStud[0].lastName.slice(0, 1);
+    };
+
     renderFlight(flight) {
-        console.log(`renderFlight ${(flight.start - this.state.date - this.dayStart) / this.verticalScale}`);
         return (
             <Flight
                 key = {flight.id}
@@ -40,14 +47,16 @@ class DayGrid extends React.Component {
                 onClick = {() => this.handleClick(flight.id)}
                 top = {(flight.start - this.state.date - this.dayStart) / this.verticalScale}
                 height = {(flight.end - flight.start) / this.verticalScale}
+                instructor = {this.getInstructorName(flight.instructor)}
+                student = {this.getStudentName(flight.student)}
             />
         );
     }
 
-    renderFlightColumn(flights, aircraft) {
+    renderFlightColumn(flights, aircraftName) {
         return (
             <div className='flightColumn'>
-                <div className='columnTitle'>{aircraft}</div>
+                <div className='columnTitle'>{aircraftName}</div>
                 {flights.map(flight => (this.renderFlight(flight)))}
             </div>
         );
@@ -58,7 +67,7 @@ class DayGrid extends React.Component {
         const calculatedStyle = {height: 3600000 / vScale}
         let hours = [];
         for (let i = start; i <= end; i++) {
-            hours.push(<div style={calculatedStyle}>{i}:00</div>);
+            hours.push(<div key={i} style={calculatedStyle}>{i}:00</div>);
         }
         return (
             <div className={classNm}>
@@ -72,7 +81,7 @@ class DayGrid extends React.Component {
             <div className='dayGrid' >
                 <div className='dateDisplay'>{this.state.dateString}</div>
                 {this.renderHoursColumn(9, 18, this.verticalScale, false)}
-                {this.state.aircraft.map(anAircraft => (this.renderFlightColumn(flightsForAircraft(this.state.flights, anAircraft), anAircraft)))}
+                {Object.values(this.state.aircraft).map(anAircraft => (this.renderFlightColumn(flightsForAircraft(this.state.flights, anAircraft.id), anAircraft.name)))}
                 {this.renderHoursColumn(9, 18, this.verticalScale, true)}
             </div>
         );
