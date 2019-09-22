@@ -6,6 +6,7 @@
  */
 * {
   font-family: "Liberation Sans Narrow", sans-serif;
+  color: #373737;
   box-sizing: border-box;
 }
 body {
@@ -23,7 +24,7 @@ body {
   border-right: 1px solid #373737;
   border-left: 0px solid #373737;
   border-top: 1px solid #373737;
-  background-color: #DCD0C0;
+  background-color: #C0B283;
 }
 .hours.right {
   text-align: left;
