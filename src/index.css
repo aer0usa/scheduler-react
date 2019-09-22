@@ -1,9 +1,15 @@
+/*
+ * #C0B283 Pale Gold
+ * #DCD0C0 Silk
+ * #F4F4F4 Paper
+ * #373737 Charcoal
+ */
 * {
   font-family: "Liberation Sans Narrow", sans-serif;
   box-sizing: border-box;
 }
 body {
-  background-color: gray;
+  background-color: #F4F4F4;
 }
 #root {
   padding: 1em;
@@ -14,36 +20,38 @@ body {
   height: auto;
   text-align: right;
   float: left;
-  border-right: 1px solid black;
-  border-left: 0px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid #373737;
+  border-left: 0px solid #373737;
+  border-top: 1px solid #373737;
+  background-color: #DCD0C0;
 }
 .hours.right {
   text-align: left;
-  border-right: 0px solid black;
-  border-left: 1px solid black;
+  border-right: 0px solid #373737;
+  border-left: 1px solid #373737;
 }
 .hours > div {
   padding: 5px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #373737;
 }
 .dayGrid {
   top: 2em;
   height: auto;
-  background-color: white;
+  background-color: #DCD0C0;
+  background-color: #DCD0C0;
 }
 .flightsContainer {
   width: 85%;
-  background-color: white;
-  border: 1px solid black;
+  background-color: #DCD0C0;
+  border: 1px solid #373737;
   float: left;
 }
 .flightColumn {
   width: 17.5%;
   height: 300px;
   padding: 15px;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid #373737;
+  border-top: 1px solid #373737;
   float: left;
   position: relative;
 }
@@ -55,12 +63,12 @@ body {
   min-height: 75px;
   width: 80%;
   height: auto;
-  background-color: lightgrey;
+  background-color: #C0B283;
   padding: 5px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border: 1px solid grey;
+  border: 1px solid #373737;
   border-radius: 4px;
   position: absolute;
 }
