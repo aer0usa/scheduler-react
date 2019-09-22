@@ -12,8 +12,8 @@ function Flight(props) {
             style={calculatedStyle}
         >
             {new Date(props.flight.start).toLocaleTimeString('en-US', {"timeStyle":"short"})}<br />
-            {props.flight.instructor}<br />
-            {props.flight.student}
+            {props.instructor}<br />
+            {props.student}
         </div>
     );
 }
