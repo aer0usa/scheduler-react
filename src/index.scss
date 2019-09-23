@@ -9,7 +9,7 @@ $charcoal: #373737;
   box-sizing: border-box;
 }
 body {
-  background-color: $paper;
+  background-color: white;
 }
 #root {
   padding: 1em;
@@ -24,25 +24,25 @@ body {
   border-left: 0px solid $charcoal;
   border-top: 1px solid $charcoal;
   background-color: $pale-gold;
+
+  div {
+    padding: 5px;
+    border-bottom: 1px solid $charcoal;
+  }
 }
 .hours.right {
   text-align: left;
   border-right: 0px solid $charcoal;
   border-left: 1px solid $charcoal;
 }
-.hours > div {
-  padding: 5px;
-  border-bottom: 1px solid $charcoal;
-}
 .dayGrid {
   top: 2em;
   height: auto;
-  background-color: $silk;
-  background-color: $silk;
+  background-color: white;
 }
 .flightsContainer {
   width: 85%;
-  background-color: $silk;
+  background-color: $paper;
   border: 1px solid $charcoal;
   float: left;
 }
@@ -50,6 +50,7 @@ body {
   width: 17.5%;
   height: 300px;
   padding: 15px;
+  background-color: $paper;
   border-right: 1px solid $charcoal;
   border-top: 1px solid $charcoal;
   float: left;
@@ -63,7 +64,7 @@ body {
   min-height: 75px;
   width: 80%;
   height: auto;
-  background-color: $pale-gold;
+  background-color: $silk;
   padding: 5px;
   white-space: nowrap;
   overflow: hidden;
