@@ -1,5 +1,4 @@
 import React from 'react';
-import './index.css';
 import { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents } from './defaultFlights.js'
 import { dayBegin, firstDay, flightsForDay, aircraftForFlights, flightsForAircraft } from './utils.js'
 import { Flight } from './flight.js'
