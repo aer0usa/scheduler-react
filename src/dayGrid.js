@@ -52,9 +52,9 @@ class DayGrid extends React.Component {
         );
     }
 
-    renderFlightColumn(flights, aircraftName) {
+    renderFlightColumn(flights, aircraftName, calculatedStyle) {
         return (
-            <div className='flightColumn'>
+            <div className='flightColumn' style={calculatedStyle}>
                 <div className='columnTitle'>{aircraftName}</div>
                 {flights.map(flight => (this.renderFlight(flight)))}
             </div>
@@ -78,12 +78,12 @@ class DayGrid extends React.Component {
     render() {
         const firstHour = 9;
         const lastHour = 18;
-        const calculatedStyle = {height: (lastHour - firstHour) * 3600000 / this.verticalScale};
+        const calculatedStyle = {height: (1 + lastHour - firstHour) * 3600000 / this.verticalScale};
         return (
             <div className='dayGrid' style={calculatedStyle}>
                 <div className='dateDisplay'>{this.state.dateString}</div>
                 {this.renderHoursColumn(firstHour, lastHour, this.verticalScale, false)}
-                {Object.values(this.state.aircraft).map(anAircraft => (this.renderFlightColumn(flightsForAircraft(this.state.flights, anAircraft.id), anAircraft.name)))}
+                {Object.values(this.state.aircraft).map(anAircraft => (this.renderFlightColumn(flightsForAircraft(this.state.flights, anAircraft.id), anAircraft.name, calculatedStyle)))}
                 {this.renderHoursColumn(firstHour, lastHour, this.verticalScale, true)}
             </div>
         );
