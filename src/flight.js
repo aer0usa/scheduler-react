@@ -1,21 +1,44 @@
 import React from 'react';
 
-function Flight(props) {
+function Flight({
+    aircraftColor,
+    aircraftName,
+    flight,
+    height,
+    instructor,
+    onClick,
+    startTime,
+    student,
+    top
+}) {
     const calculatedStyle = {
-        top: props.top + 'px',
-        height: props.height + 'px'
+        top: top + 'px',
+        height: height + 'px'
+    }
+    const headerStyle = {
+        backgroundColor: aircraftColor
     }
     return (
         <div
             className='flight'
-            onClick={props.onClick}
+            onClick={onClick}
             style={calculatedStyle}
         >
-            {new Date(props.flight.start).toLocaleTimeString('en-US', {"timeStyle":"short"})}<br />
-            {props.instructor}<br />
-            {props.student}
+            <div
+                className='flightTitle'
+                style={headerStyle}
+            >
+                {aircraftName}
+            </div>
+            <div
+                className='flightInfo'
+            >
+                {startTime}<br />
+                {instructor}<br />
+                {student}<br />
+            </div>
         </div>
     );
 }
 
-export { Flight }
+export default Flight;

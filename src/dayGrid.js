@@ -1,7 +1,7 @@
 import React from 'react';
 import { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents } from './defaultFlights.js'
 import { dayBegin, firstDay, flightsForDay, aircraftForFlights, flightsForAircraft } from './utils.js'
-import { Flight } from './flight.js'
+import Flight from './flight.js'
 
 class DayGrid extends React.Component {
     columnCount;
@@ -31,6 +31,8 @@ class DayGrid extends React.Component {
         alert(`Clicked ${thisFlight.aircraft}\n${flightStart}\nInstructor: ${thisFlight.instructor}\nStudent: ${thisFlight.student}`);
     }
 
+    getAircraft= aircraftId => this.state.aircraft[aircraftId];
+
     getInstructorName = (instructorId) => this.state.instructors.filter((filterInstructor) => filterInstructor.id === instructorId)[0].name;
 
     getStudentName = (studentId) => {
@@ -39,22 +41,26 @@ class DayGrid extends React.Component {
     };
 
     renderFlight(flight) {
+        console.log("flight", {flight, defaultAircraft});
         return (
             <Flight
-                key = {flight.id}
+                aircraftColor = {this.getAircraft(flight.aircraft).color}
+                aircraftName = {this.getAircraft(flight.aircraft).name}
                 flight = {flight}
-                onClick = {() => this.handleClick(flight.id)}
-                top = {(flight.start - this.state.date - this.dayStart) / this.verticalScale}
                 height = {(flight.end - flight.start) / this.verticalScale}
                 instructor = {this.getInstructorName(flight.instructor)}
+                key = {flight.id}
+                onClick = {() => this.handleClick(flight.id)}
+                startTime = {new Date(flight.start).toLocaleTimeString('en-US', {"timeStyle":"short"})}
                 student = {this.getStudentName(flight.student)}
+                top = {(flight.start - this.state.date - this.dayStart) / this.verticalScale}
             />
         );
     }
 
     renderFlightColumn(flights, aircraftName, calculatedStyle) {
         return (
-            <div className='flightColumn' style={calculatedStyle}>
+            <div key={aircraftName} className='flightColumn' style={calculatedStyle}>
                 <div className='columnTitle'>{aircraftName}</div>
                 {flights.map(flight => (this.renderFlight(flight)))}
             </div>

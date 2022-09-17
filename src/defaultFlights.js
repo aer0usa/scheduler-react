@@ -44,17 +44,17 @@ const defaultAircraft = [
     {
         id: 1,
         name: "N123AB",
-        color: "white"
+        color: "#C00"
     },
     {
         id: 2,
         name: "N987MN",
-        color: "blue"
+        color: "#336"
     },
     {
         id: 3,
         name: "N345YZ",
-        color: "green"
+        color: "#363"
     }
 ];
 const defaultInstructors = [
