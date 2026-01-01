@@ -3,12 +3,12 @@ function dayBegin(date) {
 }
 
 function firstDay(flights) {
-    let theDay = Number.MAX_SAFE_INTEGER;
+    const theDay = Number.MAX_SAFE_INTEGER;
     return flights.reduce((theDay, flight) => theDay < flight.start ? theDay : flight.start, theDay);
 }
 
 function aircraftForFlights(flights, colAircraft) {
-    let aircraft = {};
+    const aircraft = {};
     flights.forEach(flight => {
         const flightAircraft = colAircraft.filter((filterAircraft) => filterAircraft.id === flight.aircraft)[0];
         if (!aircraft[flightAircraft.id]) {
@@ -32,4 +32,4 @@ export {
     aircraftForFlights,
     flightsForDay,
     flightsForAircraft
-}
+};

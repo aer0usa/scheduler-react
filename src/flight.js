@@ -3,7 +3,6 @@ import React from 'react';
 function Flight({
     aircraftColor,
     aircraftName,
-    flight,
     height,
     instructor,
     onClick,
@@ -14,10 +13,10 @@ function Flight({
     const calculatedStyle = {
         top: top + 'px',
         height: height + 'px'
-    }
+    };
     const headerStyle = {
         backgroundColor: aircraftColor
-    }
+    };
     return (
         <div
             className='flight'

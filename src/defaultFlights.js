@@ -98,4 +98,4 @@ const defaultStudents = [
         lastName: "Smith"
     },
 ];
-export { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents }
+export { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents };

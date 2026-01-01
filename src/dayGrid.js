@@ -1,7 +1,7 @@
 import React from 'react';
-import { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents } from './defaultFlights.js'
-import { dayBegin, firstDay, flightsForDay, aircraftForFlights, flightsForAircraft } from './utils.js'
-import Flight from './flight.js'
+import { defaultFlights, defaultAircraft, defaultInstructors, defaultStudents } from './defaultFlights.js';
+import { dayBegin, firstDay, flightsForDay, aircraftForFlights, flightsForAircraft } from './utils.js';
+import Flight from './flight.js';
 
 class DayGrid extends React.Component {
     columnCount;
@@ -46,7 +46,6 @@ class DayGrid extends React.Component {
             <Flight
                 aircraftColor = {this.getAircraft(flight.aircraft).color}
                 aircraftName = {this.getAircraft(flight.aircraft).name}
-                flight = {flight}
                 height = {(flight.end - flight.start) / this.verticalScale}
                 instructor = {this.getInstructorName(flight.instructor)}
                 key = {flight.id}
@@ -70,7 +69,7 @@ class DayGrid extends React.Component {
     renderHoursColumn(start, end, vScale, right) {
         const classNm = 'hours' + (right ? ' right' : '');
         const calculatedStyle = {height: 3600000 / vScale};
-        let hours = [];
+        const hours = [];
         for (let i = start; i <= end; i++) {
             hours.push(<div key={i} style={calculatedStyle}>{i}:00</div>);
         }
@@ -96,4 +95,4 @@ class DayGrid extends React.Component {
     }
 }
 
-export {DayGrid}
+export {DayGrid};
